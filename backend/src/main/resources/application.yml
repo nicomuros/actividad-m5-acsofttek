@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver # El nombre de la dependencia
+    url: jdbc:mysql://localhost:3306/softtek # URL de la conexión a la base de datos
+    username: muros # Nombre de usuario
+    password: password # Password
+  jpa:
+    show-sql: true # Para que muestre las consultas sql en la consola
+    hibernate:
+      ddl-auto: create-drop # Crear y eliminar la tabla al iniciar el programa y finalizar
+    properties:
+      hibernate:
+        format_sql: true # Formatear las consultas a una forma legible en la cosnola.
+  main:
+    web-application-type: servlet # Explicitar que el tipo de aplicación va a ser servlet
