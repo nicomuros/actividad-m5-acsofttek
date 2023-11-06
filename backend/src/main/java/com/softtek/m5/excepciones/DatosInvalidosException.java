@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class DatosInvalidosException extends RuntimeException{
     /**
      * Error que se lanza cuando se recibe una solicitud con datos no validos, o la ausencia de los mismos.
-     * @param mensaje
+     * @param mensaje mensaje de error a ser devuelto al front
      */
     public DatosInvalidosException(String mensaje){
         super(mensaje);

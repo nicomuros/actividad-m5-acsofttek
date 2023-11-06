@@ -11,7 +11,8 @@ public interface TareaDao {
 
     /**
      * Método para crear una entidad tipo Tarea en la base de datos.
-     * @param tarea
+     *
+     * @param tarea entidad a ser cargada en la base de datos
      */
     void crearTarea(Tarea tarea);
 }
