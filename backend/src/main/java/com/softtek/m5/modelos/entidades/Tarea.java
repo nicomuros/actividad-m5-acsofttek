@@ -8,7 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity // Se marca como entidad para que JPA trabaje con ella
 @Data // Getters, setters, hashcode, equals, toString
@@ -20,9 +20,9 @@ public class Tarea {
     private Integer id;
     private String titulo;
     private String descripcion;
-    private Date fechaCreacion; // Se almacena la fecha en la que la tarea fue creada
-    private Date fechaModificacion; // Se almacena la fecha de la última modificación
-    private Date fechaFinalizacion; // Se almacena la fecha en la que el usuario elije cuando termina la tarea
+    private LocalDate fechaCreacion; // Se almacena la fecha en la que la tarea fue creada
+    private LocalDate fechaModificacion; // Se almacena la fecha de la última modificación
+    private LocalDate fechaFinalizacion; // Se almacena la fecha en la que el usuario elije cuando termina la tarea
     private boolean terminada = false; // true si la tarea se marcó como terminada
     private boolean disponible = true; // true si la tarea no se marcó como eliminada
 }

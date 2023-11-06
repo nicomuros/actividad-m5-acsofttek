@@ -1,3 +1,8 @@
+server:
+  port: 8080
+  error:
+    include-message: always # Para que cuando hayan errores en el back, se envíen al front junto con la respuesta
+
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver # El nombre de la dependencia
