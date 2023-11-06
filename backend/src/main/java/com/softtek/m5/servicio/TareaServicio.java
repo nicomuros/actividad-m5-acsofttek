@@ -25,7 +25,7 @@ public class TareaServicio {
     /**
      * Método para gestionar la creación de la tarea. Se encarga de realizar las validaciones necesarias, crear la entidad
      * Tarea y solicitarle al Dao que la agregue a la base de datos.
-     * @param tareaRequestDTO
+     * @param tareaRequestDTO DTO con los datos de la entidad tarea a ser cargada
      */
     public void crearTarea(TareaRequestDTO tareaRequestDTO){
 
@@ -56,8 +56,8 @@ public class TareaServicio {
      *     <li>La <b>fecha de finalización</b> no debe ser nula ni debe ser previa a la fecha de creación</li>
      * </ol>
      *
-     * @param tareaRequestDTO
-     * @param fechaActual
+     * @param tareaRequestDTO DTO con los datos a ser validados
+     * @param fechaActual contiene la fecha en la que se está creando la tarea
      */
     private void validarNuevaTarea(TareaRequestDTO tareaRequestDTO, LocalDate fechaActual){
 
