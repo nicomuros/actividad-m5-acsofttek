@@ -5,7 +5,6 @@ import com.softtek.m5.modelos.dto.TareaResponseDTO;
 import com.softtek.m5.modelos.entidades.Tarea;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

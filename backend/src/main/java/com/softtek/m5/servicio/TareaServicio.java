@@ -11,8 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.function.BiPredicate;
-import java.util.function.Predicate;
+
 
 @Service
 public class TareaServicio {
