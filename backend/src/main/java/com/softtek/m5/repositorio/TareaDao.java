@@ -19,9 +19,23 @@ public interface TareaDao {
      */
     void crearTarea(Tarea tarea);
 
+    /**
+     * Método para listar todas las tareas que existen en el repositorio
+     * @return Lista de objetos tipo Tarea
+     */
     List<Tarea> obtenerTareas();
+
+    /**
+     * Método para obtener una única tarea desde el repositorio, en base a su ID
+     * @param id Id de la tarea solicitada
+     * @return Objeto tipo Tarea
+     */
 
     Optional<Tarea> obtenerTareaPorId(Integer id);
 
+    /**
+     * Método para actualizar tarea
+     * @param tarea Tarea con los datos modificados
+     */
     void actualizarTarea(Tarea tarea);
 }

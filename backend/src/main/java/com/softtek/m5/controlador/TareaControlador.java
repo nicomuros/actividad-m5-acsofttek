@@ -16,6 +16,10 @@ public class TareaControlador {
         this.tareaServicio = tareaServicio;
     }
 
+    /**
+     * Método para escuchar solicitudes GET en la ruta "/api/tarea". Es capaz de devolver una lista de DTOs de Tarea
+     * @return Lista de TareaReponseDTO
+     */
     @GetMapping
     public List<TareaResponseDTO> listarTodasLasTareas(){
         return tareaServicio.listarTareas();
@@ -31,6 +35,11 @@ public class TareaControlador {
         tareaServicio.crearTarea(tareaRequestDTO);
     }
 
+    /**
+     * Método que escucha solicitudes DELETE en la ruta "/api/tarea". Cambia el estado "disponible" de la tarea de
+     * true a false.
+     * @param tareaId ID de la tarea a eliminar
+     */
     @DeleteMapping("{tareaId}")
     public void eliminarTarea(
             @PathVariable Integer tareaId
@@ -38,6 +47,12 @@ public class TareaControlador {
         tareaServicio.eliminarTarea(tareaId);
     }
 
+    /**
+     * Método que escucha solicitudes tipo PUT en la ruta "/api/tarea". Es capaz de modificar tanto estados unitarios
+     * como todos los estados de la tarea.
+     * @param tareaId ID de la tarea a modificar
+     * @param tareaRequestDTO Body de la solicitud con los datos a modificar.
+     */
     @PutMapping("{tareaId}")
     public void modificarTarea(
             @PathVariable Integer tareaId,
