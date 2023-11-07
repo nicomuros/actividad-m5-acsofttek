@@ -1,21 +1,40 @@
 services:
+  # Servicio 'backend', contiene las configuraciones necesarias para poder ejecutar la aplicación de springboot
+  backend:
+    container_name: m5-backend # Nombre del contenedor
+    build: ./backend # Ubicación del archivo Dockerfile
+    restart: unless-stopped # Se reinicia siempre, a no ser que se pause manualmente
+    ports: # Puertos que se exponen
+    - 8080:8080
+    networks: # Red de Docker por la que se comunicará con otros contenedores
+    - academia
+    volumes:
+      - academia_db:/var/lib/api # Ubicación donde se guardarán los datos
+    environment: # Se reemplaza la ruta de la base de datos. En vez de "localhost" se dirige al contenedor "m5-mysql"
+      SPRING_DATASOURCE_URL: jdbc:mysql://m5-mysql:3306/softtek
+    depends_on: # "backend" inicia despues que se termine de cargar el servicio "db"
+      - db
+
+  # Servicio 'db', contiene las configuraciones para la base de datos
   db:
-    container_name: m5-mysql
-    image: mysql:8.0.33
-    ports:
+    container_name: m5-mysql # Nombre del contenedor
+    image: mysql:8.0.33 # Imagen de la base de datos, en este caso se usa MySQL
+    ports: # Puertos que se exponen
       - 3306:3306
-    environment:
+    environment: # Variables de entorno
       MYSQL_DATABASE: softtek
       MYSQL_USER: muros
       MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: password
-    volumes:
+
+    volumes:  # Ubicación donde se guardarán los datos
       - academia_db:/var/lib/mysql
-    networks:
+    networks:  # Red de Docker por la que se comunicará con otros contenedores
       - academia
     restart: unless-stopped
-networks:
+
+networks: # Configuración de la red de docker
   academia:
     driver: bridge
-volumes:
+volumes: # Configuración del almacen de datos de docker
   academia_db:
