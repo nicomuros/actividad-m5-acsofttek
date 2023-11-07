@@ -1,8 +1,12 @@
 package com.softtek.m5.modelos.mapper;
 
 import com.softtek.m5.modelos.dto.TareaRequestDTO;
+import com.softtek.m5.modelos.dto.TareaResponseDTO;
 import com.softtek.m5.modelos.entidades.Tarea;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Clase TareaMapper: Utilizada para convertir entre objetos Tarea, TareaRequestDTO y TareaResponseDTO.
@@ -21,9 +25,30 @@ public class TareaMapper {
         tarea.setTitulo(requestDTO.getTitulo());
         tarea.setDescripcion(requestDTO.getDescripcion());
         tarea.setFechaFinalizacion(requestDTO.getFechaFinalizacion());
-        tarea.setTerminada(requestDTO.isTerminada());
-        tarea.setDisponible(requestDTO.isDisponible());
+        tarea.setTerminada(requestDTO.getTerminada());
 
         return tarea;
+    }
+
+    public TareaResponseDTO TareaADto(Tarea tarea){
+        TareaResponseDTO tareaResponseDTO = new TareaResponseDTO();
+        tareaResponseDTO.setId(tarea.getId());
+        tareaResponseDTO.setTitulo(tarea.getTitulo());
+        tareaResponseDTO.setDescripcion(tarea.getDescripcion());
+        tareaResponseDTO.setFechaFinalizacion(tarea.getFechaFinalizacion());
+        tareaResponseDTO.setTerminada(tarea.getTerminada());
+
+        return tareaResponseDTO;
+    }
+
+    public List<TareaResponseDTO> listaTareaAListaDto(List<Tarea> listaDeTareas){
+        List<TareaResponseDTO> listaDTO;
+
+        listaDTO = listaDeTareas
+                .stream()
+                .map(this::TareaADto)
+                .toList();
+
+        return listaDTO;
     }
 }

@@ -23,6 +23,6 @@ public class Tarea {
     private LocalDate fechaCreacion; // Se almacena la fecha en la que la tarea fue creada
     private LocalDate fechaModificacion; // Se almacena la fecha de la última modificación
     private LocalDate fechaFinalizacion; // Se almacena la fecha en la que el usuario elije cuando termina la tarea
-    private boolean terminada = false; // true si la tarea se marcó como terminada
-    private boolean disponible = true; // true si la tarea no se marcó como eliminada
+    private Boolean terminada = false; // true si la tarea se marcó como terminada
+    private Boolean disponible = true; // true si la tarea no se marcó como eliminada
 }

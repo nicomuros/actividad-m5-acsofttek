@@ -14,9 +14,10 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class TareaRequestDTO {
+public class TareaResponseDTO {
+    private Integer id;
     private String titulo;
     private String descripcion;
-    private LocalDate fechaFinalizacion; // Se almacena la fecha en la que el usuario elije cuando termina la tarea
+    private LocalDate fechaFinalizacion; // Se envía la fecha en la que el usuario elije cuando termina la tarea
     private Boolean terminada; // true si la tarea se marcó como terminada
 }
