@@ -29,6 +29,11 @@ public class TareaMapper {
         return tarea;
     }
 
+    /**
+     * Convierte un objeto Tarea en un objeto TareaResponseDTO.
+     * @param tarea El objeto Tarea a convertir.
+     * @return El objeto TareaResponseDTO resultante.
+     */
     public TareaResponseDTO TareaADto(Tarea tarea){
         TareaResponseDTO tareaResponseDTO = new TareaResponseDTO();
         tareaResponseDTO.setId(tarea.getId());
@@ -40,6 +45,11 @@ public class TareaMapper {
         return tareaResponseDTO;
     }
 
+    /**
+     * Convierte una lista de objetos Tarea en una lista de objetos TareaResponseDTO.
+     * @param listaDeTareas La lista de objetos Tarea a convertir.
+     * @return La lista de objetos TareaResponseDTO resultante.
+     */
     public List<TareaResponseDTO> listaTareaAListaDto(List<Tarea> listaDeTareas){
         List<TareaResponseDTO> listaDTO;
 
