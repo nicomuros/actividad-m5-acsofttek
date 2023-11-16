@@ -21,6 +21,7 @@ public class TareaControlador {
      * @return Lista de TareaReponseDTO
      */
     @GetMapping
+    @CrossOrigin
     public List<TareaResponseDTO> listarTodasLasTareas(){
         return tareaServicio.listarTareas();
     }
@@ -31,8 +32,9 @@ public class TareaControlador {
      * @param tareaRequestDTO DTO con los datos necesarios para crear la tarea
      */
     @PostMapping
-    public void registrarTarea(@RequestBody TareaRequestDTO tareaRequestDTO){
-        tareaServicio.crearTarea(tareaRequestDTO);
+    @CrossOrigin
+    public TareaResponseDTO registrarTarea(@RequestBody TareaRequestDTO tareaRequestDTO){
+        return tareaServicio.crearTarea(tareaRequestDTO);
     }
 
     /**
@@ -41,6 +43,7 @@ public class TareaControlador {
      * @param tareaId ID de la tarea a eliminar
      */
     @DeleteMapping("{tareaId}")
+    @CrossOrigin
     public void eliminarTarea(
             @PathVariable Integer tareaId
     ){
@@ -54,10 +57,11 @@ public class TareaControlador {
      * @param tareaRequestDTO Body de la solicitud con los datos a modificar.
      */
     @PutMapping("{tareaId}")
-    public void modificarTarea(
+    @CrossOrigin
+    public TareaResponseDTO modificarTarea(
             @PathVariable Integer tareaId,
             @RequestBody TareaRequestDTO tareaRequestDTO
     ){
-        tareaServicio.modificarTarea(tareaId, tareaRequestDTO);
+        return tareaServicio.modificarTarea(tareaId, tareaRequestDTO);
     }
 }

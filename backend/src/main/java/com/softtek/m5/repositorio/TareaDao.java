@@ -7,8 +7,8 @@ import java.util.Optional;
 
 /**
  * Esta interfaz sirve como una abstracción de las operaciones de acceso a datos y no depende de una implementación
- * concreta de la base de datos. Esto significa que si en el futuro se decide cambiar JpaRepository por otra implementación
- * (por ejemplo JDBC) se pueda hacer sin mayores dificultades
+ * concreta de ella. Esto significa que si en el futuro se decide cambiar JpaRepository por otra implementación
+ * (por ejemplo JDBC) se pueda hacer sin mayores dificultades.
  */
 public interface TareaDao {
 

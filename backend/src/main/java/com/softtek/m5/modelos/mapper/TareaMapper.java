@@ -34,7 +34,7 @@ public class TareaMapper {
      * @param tarea El objeto Tarea a convertir.
      * @return El objeto TareaResponseDTO resultante.
      */
-    public TareaResponseDTO TareaADto(Tarea tarea){
+    public TareaResponseDTO tareaADto(Tarea tarea){
         TareaResponseDTO tareaResponseDTO = new TareaResponseDTO();
         tareaResponseDTO.setId(tarea.getId());
         tareaResponseDTO.setTitulo(tarea.getTitulo());
@@ -55,7 +55,7 @@ public class TareaMapper {
 
         listaDTO = listaDeTareas
                 .stream()
-                .map(this::TareaADto)
+                .map(this::tareaADto)
                 .toList();
 
         return listaDTO;

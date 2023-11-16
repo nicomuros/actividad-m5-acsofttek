@@ -37,7 +37,7 @@ public class TareaServicio {
      *
      * @param tareaRequestDTO DTO con los datos de la entidad tarea a ser cargada
      */
-    public void crearTarea(TareaRequestDTO tareaRequestDTO){
+    public TareaResponseDTO crearTarea(TareaRequestDTO tareaRequestDTO){
 
         // Validar datos
         validarNuevaTarea(tareaRequestDTO);
@@ -54,6 +54,9 @@ public class TareaServicio {
 
         // Se agrega al repositorio
         tareaDao.crearTarea(tarea);
+
+        // Se retorna la tarea creada
+        return tareaMapper.tareaADto(tarea);
     }
 
     /**
@@ -92,7 +95,7 @@ public class TareaServicio {
      * @param id El ID de la tarea a modificar.
      * @param tareaRequestDTO DTO con los campos que deban ser modificados.
      */
-    public void modificarTarea(Integer id, TareaRequestDTO tareaRequestDTO){
+    public TareaResponseDTO modificarTarea(Integer id, TareaRequestDTO tareaRequestDTO){
 
         // Se recupera la tarea del repositorio. Si no existe, se lanza un error
         Tarea tarea = tareaDao.obtenerTareaPorId(id)
@@ -131,7 +134,7 @@ public class TareaServicio {
 
         // Se verifica si es necesario actualizar el campo Fecha de finalización
         if (tareaRequestDTO.getFechaFinalizacion() != null
-                && tareaRequestDTO.getFechaFinalizacion() != tarea.getFechaFinalizacion()){
+                && !tareaRequestDTO.getFechaFinalizacion().equals(tarea.getFechaFinalizacion())){
 
             // Se valida la nueva fecha
             validarFechaFinalizacion(tareaRequestDTO.getFechaFinalizacion());
@@ -162,6 +165,9 @@ public class TareaServicio {
 
         // Se solicita actualizar la tarea.
         tareaDao.actualizarTarea(tarea);
+
+        // Se retorna la tarea modificada
+        return tareaMapper.tareaADto(tarea);
     }
 
     public void eliminarTarea(Integer id){
