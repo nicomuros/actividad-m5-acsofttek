@@ -14,18 +14,10 @@ Este proyecto fue realizado como presentación para la **Academia Java + Springb
 - [Arquitectura de la aplicación](#arquitectura-de-la-aplicación)
     - [Backend](#backend)
       - [Estructura N-Tier](#estructura-n-tier)
-        - [Patrón DAO](#patrón-dao)
-        - [Patrón DTO](#patrón-dto)
-        - [Patrón de borrado lógico](#patrón-de-borrado-lógico)
       - [Endpoints](#endpoints)
     - [Frontend](#frontend)
       - [Estructura de Carpetas](#estructura-de-carpetas)
       - [Patrones y Buenas Prácticas](#patrones-y-buenas-prácticas)
-        - [Hooks](#hooks)
-        - [React Router](#react-router)
-        - [React Context](#react-context)
-        - [Estilos con Bootstrap y React-Bootstrap](#estilos-con-bootstrap-y-react-bootstrap)
-        - [Solicitudes a la API RESTful mediante Axios](#solicitudes-a-la-api-restful-mediante-axios)
 
 ## Descripción
 
@@ -70,15 +62,6 @@ Para poder usar el proyecto, siga los siguientes pasos:
 
 Este comando iniciará y orquestará los contenedores definidos en el archivo `docker-compose.yml`:
 
-##### Servicio 'frontend'
-El contenedor denominado `m5-frontend` se encarga de alojar la parte delantera de la aplicación. Su construcción se basa en el archivo Dockerfile ubicado en `./frontend`. Este servicio expone el puerto local `5173` para la comunicación externa y está conectado a la red de Docker llamada `academia`.  La variable de entorno `VITE_BACKEND_URL` se configura para apuntar al servicio backend en `http://localhost:8080`.
-
-##### Servicio 'backend'
-El contenedor `m5-backend` aloja la lógica del lado del servidor utilizando Spring Boot. Su construcción se realiza a partir del Dockerfile ubicado en `./backend`. Similar al servicio frontend, este servicio expone el puerto local `8080` para la comunicación externa y se conecta a la red de Docker `academia`. La variable de entorno `SPRING_DATASOURCE_URL` se configura para establecer la conexión con la base de datos en `jdbc:mysql://m5-mysql:3306/softtek`.
-
-##### Servicio 'db'
-El contenedor denominado `m5-mysql` sirve como la base de datos para la aplicación, utilizando la imagen MySQL versión 8.0.33. Expone el puerto `3306` localmente y se configura con variables de entorno para crear la base de datos `softtek` con un usuario `muros` y contraseña `password`. Este servicio también se conecta a la red de Docker `academia`. Tanto los servicios 'frontend' como 'backend' dependen de la correcta inicialización de este servicio.
-
 ### Usando Maven y npm directamente
 
 * Iniciar MySQL y crear una base de datos llamada `softtek`. Asegurarse que esté escuchando el puerto **3306**. Las credenciales que posee de forma nativa la aplicación son `username: muros` `password: password`.
@@ -113,16 +96,6 @@ La estructura N-Tier o el diseño en capas se dividen las funcionalidades de la 
 * **Capa de Modelo (`/modelo`):** Esta capa es responsable de representar los datos y la estructura de la aplicación. Se subdivide en tres paquetes principales: `/dto`, que contiene objetos de transferencia de datos; `/entidades`, que almacena las entidades que representan los elementos fundamentales del dominio de la aplicación; y `/mapper`, donde se gestionan las conversiones entre los objetos DTO y las entidades del modelo.
 
 * **Capa de Excepciones (`/excepciones`):** Aquí se encuentran las excepciones personalizadas de la aplicación. Heredan directamente de `RuntimeExcepcion`.
-
-
-##### Patrón DAO
-La interfaz `TareaDao` define métodos que se encargan de la interacción con la base de datos, como agregar, seleccionar, verificar, modificar y eliminar tareas. Esto separa la lógica de acceso a datos de la lógica de negocio relacionada con las tareas. Luego, la implementación concreta `TareaJPADaoImpl` utiliza **JPA** para gestionar las transacciones con la base de datos.
-
-##### Patrón DTO
-Los DTO simplifican la transferencia de datos entre la capa de presentación y la capa de servicio al transmitir solo los datos necesarios. Además, se emplea un **mapper** para convertir datos entre los DTO y las entidades del modelo.
-
-##### Patrón de borrado lógico
-Cuando llega una solicitud de baja por parte del cliente, los datos no se borran de la base de datos, sino que se marcan como "no disponibles". Aquellos datos eliminados lógicamente todavía existen en la base de datos, pero se ocultan de las consultas normales.
 
 #### Endpoints
 ##### Crear tarea
