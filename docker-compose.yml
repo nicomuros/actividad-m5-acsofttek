@@ -5,11 +5,11 @@ services:
     build: ./frontend # Ubicación del archivo Dockerfile
     restart: unless-stopped # Se reinicia siempre, a no ser que se pause manualmente
     ports: # Puertos que se exponen
-    - 5173:5173
+      - 5173:5173
     networks: # Red de Docker por la que se comunicará con otros contenedores
-    - academia
+      - academia
     volumes:
-        - ./frontend:/app # Ubicación donde se guardarán los datos
+      - ./frontend:/app # Ubicación donde se guardarán los datos
     environment:
       VITE_BACKEND_URL: http://localhost:8080 # Se reemplaza la ruta de la base de datos.
     depends_on:
@@ -20,15 +20,16 @@ services:
     build: ./backend # Ubicación del archivo Dockerfile
     restart: unless-stopped # Se reinicia siempre, a no ser que se pause manualmente
     ports: # Puertos que se exponen
-    - 8080:8080
+      - 8080:8080
     networks: # Red de Docker por la que se comunicará con otros contenedores
-    - academia
+      - academia
     volumes:
-        - ./backend:/app # Ubicación donde se guardarán los datosw
+      - ./backend:/app # Ubicación donde se guardarán los datosw
     environment: # Se reemplaza la ruta de la base de datos. En vez de "localhost" se dirige al contenedor "m5-mysql"
       SPRING_DATASOURCE_URL: jdbc:mysql://m5-mysql:3306/softtek
     depends_on: # "backend" inicia despues que se termine de cargar el servicio "db"
-      - db
+      db:
+        condition: service_healthy
 
   # Servicio 'db', contiene las configuraciones para la base de datos
   db:
@@ -47,6 +48,11 @@ services:
     networks:  # Red de Docker por la que se comunicará con otros contenedores
       - academia
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-uroot", "-p$$MYSQL_ROOT_PASSWORD"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
 
 networks: # Configuración de la red de docker
   academia:
