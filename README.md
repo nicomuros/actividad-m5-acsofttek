@@ -62,7 +62,7 @@ Para poder usar el proyecto, siga los siguientes pasos:
 
 `docker-compose up -d`
 
-Este comando iniciará y orquestará los contenedores definidos en el archivo `docker-compose.yml`. R
+Este comando iniciará y orquestará los contenedores definidos en el archivo `docker-compose.yml`. 
 
 ### Usando Maven y npm directamente
 
