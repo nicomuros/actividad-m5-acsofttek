@@ -101,6 +101,7 @@ La estructura N-Tier o el diseño en capas se dividen las funcionalidades de la 
 
 #### Endpoints
 ##### Crear tarea
+
 _Request:_ `POST http://localhost:8080/api/tarea`
 ```json
 {
@@ -120,6 +121,7 @@ _Response:_ `STATUS 200 OK`
 }
 ```
 ##### Lista completa de tareas
+
 _Request:_  `GET http://localhost:8080/api/tarea`
 
 _Response:_ `STATUS 200 OK`
@@ -136,6 +138,7 @@ _Response:_ `STATUS 200 OK`
 ```
 ##### Modificar tarea
 El endpoint acepta modificaciones parciales de las tareas, es decir, se puede enviar una solicitud de modificación con cambios en todos los campos o por separado. Es necesario incluir el ID de la tarea a modificar en la URL de la solicitud:
+
 _Request:_ `PUT http://localhost:8080/api/tarea/{id}`
 ```json
 {
