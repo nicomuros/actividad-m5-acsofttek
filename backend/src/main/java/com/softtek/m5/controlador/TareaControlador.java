@@ -3,12 +3,14 @@ package com.softtek.m5.controlador;
 import com.softtek.m5.modelos.dto.TareaRequestDTO;
 import com.softtek.m5.modelos.dto.TareaResponseDTO;
 import com.softtek.m5.servicio.TareaServicio;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/tarea") // Este controlador solo va a escuchar desde esa ruta en adelante
+@CrossOrigin(origins = "*") // Permite que el front se conecte a este controlador
 public class TareaControlador {
 
     private final TareaServicio tareaServicio;
@@ -21,9 +23,9 @@ public class TareaControlador {
      * @return Lista de TareaReponseDTO
      */
     @GetMapping
-    @CrossOrigin
-    public List<TareaResponseDTO> listarTodasLasTareas(){
-        return tareaServicio.listarTareas();
+    public ResponseEntity<?> listarTodasLasTareas(){
+        List<TareaResponseDTO> tareas = tareaServicio.listarTareas();
+        return ResponseEntity.ok(tareas);
     }
 
     /**
@@ -32,9 +34,8 @@ public class TareaControlador {
      * @param tareaRequestDTO DTO con los datos necesarios para crear la tarea
      */
     @PostMapping
-    @CrossOrigin
-    public TareaResponseDTO registrarTarea(@RequestBody TareaRequestDTO tareaRequestDTO){
-        return tareaServicio.crearTarea(tareaRequestDTO);
+    public ResponseEntity<?> registrarTarea(@RequestBody TareaRequestDTO tareaRequestDTO){
+        return ResponseEntity.ok(tareaServicio.crearTarea(tareaRequestDTO));
     }
 
     /**
@@ -43,11 +44,11 @@ public class TareaControlador {
      * @param tareaId ID de la tarea a eliminar
      */
     @DeleteMapping("{tareaId}")
-    @CrossOrigin
-    public void eliminarTarea(
+    public ResponseEntity<?> eliminarTarea(
             @PathVariable Integer tareaId
     ){
         tareaServicio.eliminarTarea(tareaId);
+        return ResponseEntity.ok().build();
     }
 
     /**
@@ -57,11 +58,10 @@ public class TareaControlador {
      * @param tareaRequestDTO Body de la solicitud con los datos a modificar.
      */
     @PutMapping("{tareaId}")
-    @CrossOrigin
-    public TareaResponseDTO modificarTarea(
+    public ResponseEntity<?> modificarTarea(
             @PathVariable Integer tareaId,
             @RequestBody TareaRequestDTO tareaRequestDTO
     ){
-        return tareaServicio.modificarTarea(tareaId, tareaRequestDTO);
+        return ResponseEntity.ok(tareaServicio.modificarTarea(tareaId, tareaRequestDTO));
     }
 }
