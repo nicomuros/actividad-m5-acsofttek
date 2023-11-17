@@ -3,7 +3,7 @@
 
 Este proyecto fue realizado como presentación para la **Academia Java + Springboot**, dictada por **Softtek** en conjunto con la **Universidad Siglo-XII**.
 
-![Funcionamiento de la aplicacion]https://github.com/nicomuros/actividad-m4-acsofttek/blob/main/capturas/Comprobacion%20MySQL.gif?raw=true)
+
 
 - [Descripción](#descripción)
 - [Como usar el proyecto](#como-usar-el-proyecto)
@@ -18,6 +18,8 @@ Este proyecto fue realizado como presentación para la **Academia Java + Springb
     - [Frontend](#frontend)
       - [Estructura de Carpetas](#estructura-de-carpetas)
       - [Patrones y Buenas Prácticas](#patrones-y-buenas-prácticas)
+        
+![Demo](https://github.com/nicomuros/actividad-m5-acsofttek/blob/main/capturas/funcionamiento.gif?raw=true)
 
 ## Descripción
 
