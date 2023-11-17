@@ -48,11 +48,11 @@ Además, el proyecto cuenta con un archivo `docker-compose.yml`, con el cual se 
 Para poder usar el proyecto, siga los siguientes pasos:
 * Clonar el repositorio desde GitHub al sistema local. Puedes hacerlo utilizando Git y ejecutando el siguiente comando en tu terminal:
 
-`git clone https://github.com/nicomuros/actividad-m4-acsofttek.git`
+`git clone https://github.com/nicomuros/actividad-m5-acsofttek.git`
 
 * Navegar al directorio de la aplicación:
 
-`cd actividad-m4-acsofttek`
+`cd actividad-m5-acsofttek`
 
 * Debido a la configuración de la aplicación, debe asegurarse que los puertos `3306` `8080` y  `5173` estén disponibles.
 
@@ -62,7 +62,7 @@ Para poder usar el proyecto, siga los siguientes pasos:
 
 `docker-compose up -d`
 
-Este comando iniciará y orquestará los contenedores definidos en el archivo `docker-compose.yml`:
+Este comando iniciará y orquestará los contenedores definidos en el archivo `docker-compose.yml`. R
 
 ### Usando Maven y npm directamente
 
@@ -74,7 +74,7 @@ Este comando iniciará y orquestará los contenedores definidos en el archivo `d
 
 * Ejecuta la aplicación JAR con el siguiente comando, reemplazando "nombre-del-archivo.jar" con el nombre real del archivo JAR generado:
 
-`java -jar target/nombre-del-archivo.jar`
+`java -jar target/actividad-m5-1.0.jar`
 
 * En el directorio del frontend (`./frontend`), ejecuta los siguientes comandos:
 
